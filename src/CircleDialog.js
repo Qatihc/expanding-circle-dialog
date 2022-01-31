@@ -1,8 +1,8 @@
 import { useState  } from 'react';
 import styled from 'styled-components';
-import AddIcon from './AddIcon';
+import PlusIcon from './PlusIcon';
 
-const AnimatedAddIcon = styled(AddIcon)`
+const AnimatedPlusIcon = styled(PlusIcon)`
   cursor: pointer;
   position: relative;
   z-index: 2;
@@ -19,7 +19,7 @@ const AnimatedAddIcon = styled(AddIcon)`
   }
 `
 
-const Modal = styled.div`
+const Dialog = styled.div`
   position: absolute;
   ${({ buttonPosition, iconSize }) =>
     `${buttonPosition}: ${iconSize};`
@@ -39,20 +39,20 @@ const Modal = styled.div`
   }
 `
 
-const CircleModal = ({ className, children, size = '1rem', buttonPosition = 'top' }) => {
-  const [active, setActive] = useState(true);
+const CircleDialog = ({ className, children, size = '1rem', buttonPosition = 'top' }) => {
+  const [active, setActive] = useState(false);
   const toggleActive = () => {
     setActive(!active);
   }
   const topOffset = (buttonPosition === 'top') ? '0' : '100%' 
   return (
     <div className={className}>
-      <AnimatedAddIcon size={size} active={active} onClick={toggleActive} />
-      <Modal active={active} iconSize={size} buttonPosition={buttonPosition} topOffset={topOffset}>{children}</Modal>
+      <AnimatedPlusIcon size={size} active={active} onClick={toggleActive} />
+      <Dialog active={active} iconSize={size} buttonPosition={buttonPosition} topOffset={topOffset}>{children}</Dialog>
     </div>
   )
 }
 
-export default styled(CircleModal)`
+export default styled(CircleDialog)`
   position: relative;
 `;

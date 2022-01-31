@@ -36,10 +36,10 @@ const Button = styled.button`
   }
 `
 
-const AddIcon = ({ onClick, className, size, color = 'black', backgroundColor = 'white' }) => {
+const PlusIcon = ({ onClick, className, size, color = 'black', backgroundColor = 'white' }) => {
   return (
     <Button className={className} onClick={onClick} size={size} color={color} backgroundColor={backgroundColor}/>
   )
 }
 
-export default AddIcon;
+export default PlusIcon;

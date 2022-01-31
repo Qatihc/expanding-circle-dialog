@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CircleModal from "./CircleModal";
+import CircleDialog from "./CircleDialog";
 
 const Container = styled.div`
   display: flex;
@@ -24,12 +24,12 @@ const StyledTestComponent = styled(TestComponent)`
 function App() {
   return (
   <Container>
-    <CircleModal buttonPosition="bottom">
+    <CircleDialog buttonPosition="bottom">
       <StyledTestComponent />
-    </CircleModal>
-    <CircleModal buttonPosition="top">
+    </CircleDialog>
+    <CircleDialog buttonPosition="top">
       <StyledTestComponent />
-    </CircleModal>
+    </CircleDialog>
   </Container>
   );
 }
