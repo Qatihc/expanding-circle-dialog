@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledCricleModal from "./CircleModal";
+import CircleModal from "./CircleModal";
 
 const Container = styled.div`
   display: flex;
@@ -8,10 +8,25 @@ const Container = styled.div`
   justify-content: center;
 `
 
+const A = ({ className }) => {
+  return (
+    <p className={className}>
+    'AAAAAAAAAaAAAAAavAAAa'
+
+    </p>
+  )
+}
+
+const Ba = styled(A)`
+  padding: 3rem;
+`
+
 function App() {
   return (
   <Container>
-    <StyledCricleModal />
+    <CircleModal>
+      <Ba />
+    </CircleModal>
   </Container>
   );
 }
