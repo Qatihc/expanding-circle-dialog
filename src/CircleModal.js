@@ -21,31 +21,34 @@ const AnimatedAddIcon = styled(AddIcon)`
 
 const Modal = styled.div`
   position: absolute;
-  top: ${({ iconSize }) => iconSize};
+  ${({ buttonPosition, iconSize }) =>
+    `${buttonPosition}: ${iconSize};`
+  }
+
   right: 0;
   background-color: turquoise;
   transition: all 1s ease-in-out;
   ${
-    ({ active, iconSize }) => active ?
+    ({ active, iconSize, topOffset }) => active ?
     `
       clip-path: circle(100% at 50% 50%);
     ` :
     `
-      clip-path: circle(0% at calc(100% - ${iconSize}) 0%);
+      clip-path: circle(0% at calc(100% - ${iconSize}) ${topOffset});
     `
   }
 `
 
-const CircleModal = ({ className, children, size = '1rem' }) => {
+const CircleModal = ({ className, children, size = '1rem', buttonPosition = 'top' }) => {
   const [active, setActive] = useState(true);
   const toggleActive = () => {
     setActive(!active);
   }
-
+  const topOffset = (buttonPosition === 'top') ? '0' : '100%' 
   return (
     <div className={className}>
-      <AnimatedAddIcon size={size} active={active} onClick={toggleActive}/>
-      <Modal active={active} iconSize={size}>{children}</Modal>
+      <AnimatedAddIcon size={size} active={active} onClick={toggleActive} />
+      <Modal active={active} iconSize={size} buttonPosition={buttonPosition} topOffset={topOffset}>{children}</Modal>
     </div>
   )
 }
